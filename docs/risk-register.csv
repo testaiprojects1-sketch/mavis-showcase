@@ -1,0 +1,7 @@
+id,risk,likelihood,impact,mitigation,owner,status
+R-01,PII leakage in logs,Medium,High,"Redaction pipeline + schema validation",Jane,Active
+R-02,Unintended tool execution,Low,High,"Confirmation prompts for destructive actions",Jane,Active
+R-03,LLM cost overrun,Medium,Medium,"Daily budget alerts + fallback to Sonnet",Jane,Monitored
+R-04,Guardrail bypass via prompt injection,Low,Critical,"Red-team testing + SOUL.md hardening",Jane,Active
+R-05,Memory corruption/data loss,Low,Critical,"Automated Supabase backups + Hermes file memory sync",Jane,Planned
+R-06,Tool API deprecation,Medium,Medium,"Version-pinned deps + abstraction layer",Jane,Active

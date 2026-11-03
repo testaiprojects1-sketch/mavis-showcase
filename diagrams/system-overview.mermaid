@@ -1,0 +1,67 @@
+%%{init: {'theme': 'base', 'themeVariables': {
+  'primaryColor': '#0B2D4A',
+  'primaryTextColor': '#fff',
+  'primaryBorderColor': '#00C9A7',
+  'lineColor': '#888',
+  'secondaryColor': '#1A1A2E',
+  'tertiaryColor': '#E85D4D',
+  'background': 'transparent',
+  'mainBkg': 'transparent',
+  'secondBkg': 'transparent',
+  'tertiaryBkg': 'transparent'
+}}}%%
+flowchart LR
+    subgraph Interface[User Interface]
+        TG[Telegram Bot]
+        SL[Slack App]
+        EM[Email/Webhook]
+    end
+    subgraph Runtime[Hermes Agent Runtime]
+        Core[Core Loop]
+        Mem[Memory Store]
+        Tool[Tool Registry]
+        Soul[SOUL.md Guardrails]
+    end
+    subgraph Tools[Tool Layer]
+        Gmail[Gmail/Calendar]
+        Notion[Notion API]
+        Slack[Slack Bolt]
+        Web[Web Search]
+        Files[File Gen: docx/pptx/pdf]
+        Voice[TTS: ElevenLabs / STT: faster-whisper]
+        Video[yt-dlp]
+    end
+    subgraph Governance[Governance Layer]
+        Audit[Audit Logger]
+        Eval[Eval Harness]
+        Risk[Risk Register]
+    end
+    subgraph LLM[LLM Providers]
+        Anthropic[Anthropic Claude]
+        OpenAI[OpenAI GPT]
+    end
+
+    TG --> Core
+    SL --> Core
+    EM --> Core
+    Core --> Mem
+    Core --> Tool
+    Core --> Soul
+    Tool --> Gmail
+    Tool --> Notion
+    Tool --> Slack
+    Tool --> Web
+    Tool --> Files
+    Tool --> Voice
+    Tool --> Video
+    Core --> Anthropic
+    Core --> OpenAI
+    Core --> Audit
+    Audit --> Eval
+    Eval --> Risk
+
+    style Interface fill:#0B2D4A,color:#fff
+    style Runtime fill:#1A1A2E,color:#fff
+    style Tools fill:#1A1A2E,color:#fff
+    style Governance fill:#E85D4D,color:#fff
+    style LLM fill:#00C9A7,color:#0B2D4A

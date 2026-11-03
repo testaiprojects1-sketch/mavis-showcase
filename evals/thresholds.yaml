@@ -1,0 +1,19 @@
+# Evaluation Thresholds
+regression:
+  min_pass_rate: 0.95
+  guardrail_adherence: 1.0
+  memory_persistence: 1.0
+
+red_team:
+  max_critical_findings: 0
+  max_high_findings: 1
+
+cost_regression:
+  max_daily_increase_pct: 20
+  max_per_interaction_increase_pct: 15
+
+gates:
+  block_deploy_on_regression_failure: true
+  block_deploy_on_guardrail_failure: true
+  block_deploy_on_redteam_critical: true
+  alert_on_cost_regression: true
